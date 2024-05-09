@@ -1,0 +1,113 @@
+<mat-card>
+    <h1>Your Profile Details</h1>
+    <mat-card-content>
+         <div class="bootstrap-wrapper">
+             <div class="container">
+                 <div class="container text-center">
+                     <img src="https://www.nicepng.com/png/full/73-730154_open-default-profile-picture-png.png" alt=""
+                     class="profile-image ">
+                     <h1 class="mt20">{{user.firstName}} {{user.lastName}}</h1>
+                 </div>
+                 <div class="row">
+                     <div class="col-md-10 offset-md-1">
+                          
+
+                          <table class="table text-center">
+                              <tr>
+                                  <td>
+                                      Username
+                                  </td>
+                                  <td>
+                                    {{user.username}}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                    Userid
+                                </td>
+                                <td>
+                                 EXAM{{user.id}}
+                              </td>
+                            </tr>
+                            <tr>
+                                
+                                <td>
+                                    Phone
+                                </td>
+                                <td>
+                                    {{ user.phone || '6258990987' }}
+                              </td>
+                           
+                            </tr>
+                            <tr>
+                                <td>
+                                   Role
+                                </td>
+                                <td>
+                                  {{user.authorities[0].authority}}
+                              </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   Status
+                                </td>
+                                <td>
+                                 {{user.enabled ? "ACTIVE" :"NOTACTIVE"}}
+                              </td>
+                            </tr>
+                            
+
+                          </table>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         
+    </mat-card-content>
+</mat-card>
+
+<!-- 
+<mat-card>
+    <h1>Your Profile Details</h1>
+    <mat-card-content>
+         <div class="bootstrap-wrapper">
+             <div class="container">
+                 <div class="container text-center">
+                     <img src="https://www.nicepng.com/png/full/73-730154_open-default-profile-picture-png.png" alt=""
+                     class="profile-image ">
+                     <h1 class="mt20">{{user.firstName}} {{user.lastName}}</h1>
+                 </div>
+                 <div class="row">
+                     <div class="col-md-10 offset-md-1">
+                          Profile Form
+                          <form #profileForm="ngForm">
+                              <div class="form-group">
+                                  <label for="username">Username</label>
+                                  <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" disabled>
+                              </div>
+                              <div class="form-group">
+                                  <label for="userId">User ID</label>
+                                  <input type="text" class="form-control" id="userId" name="userId" [(ngModel)]="user.id" disabled>
+                              </div>
+                              <div class="form-group">
+                                  <label for="phone">Phone</label>
+                                  <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="user.phone">
+                              </div>
+                              <div class="form-group">
+                                  <label for="role">Role</label>
+                                  <input type="text" class="form-control" id="role" name="role" [(ngModel)]="user.authorities[0].authority" disabled>
+                              </div>
+                              <div class="form-group">
+                                  <label for="status">Status</label>
+                                  <input type="text" class="form-control" id="status" name="status" [(ngModel)]="user.enabled ? 'ACTIVE' : 'NOT ACTIVE'" disabled>
+                              </div>
+                          </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <mat-card-actions class="text-center">
+             <button mat-raised-button color="primary" (click)="editProfile(profileForm)">UPDATE</button>
+         </mat-card-actions>
+    </mat-card-content>
+</mat-card> -->
