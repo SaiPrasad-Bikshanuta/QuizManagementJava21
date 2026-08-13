@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,11 +66,29 @@ public class UserController {
 	@GetMapping("/{username}")
 	public User getUser(@PathVariable("username") String username) {
 		
-		
 		return this.userService.getUser(username);
 	}
-	
-	
+	@PostMapping("/getUserWith")
+	public Boolean getUserWith(@RequestBody User userDetails) {
+
+		if(this.userService.existsByUsername(userDetails.getUsername()) && (this.userService.existsByEmail(userDetails.getEmail()))){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	@PutMapping("/resetPassword")
+	public Boolean updatePassword(@RequestBody User userData){
+		User user=this.userService.getUser(userData.getUsername());
+		String pass=this.bCryptPasswordEncoder.encode(userData.getPassword());
+		if(user!=null){
+			this.userService.updatePassword(userData.getUsername(),pass );
+			return true;
+		}
+		return false;
+	}
 	//delete user by id
 	@DeleteMapping("/{userId}")
 	public void deleteUser(@PathVariable("userId") Long userId) {

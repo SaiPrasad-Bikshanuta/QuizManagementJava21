@@ -67,7 +67,7 @@ public BCryptPasswordEncoder passwordEncoder() {
 		      .cors()
 		      .disable()
 		      .authorizeRequests()
-		      .antMatchers("/generate-token","/user/").permitAll()
+		      .antMatchers("/generate-token","/user/","/user/getUserWith","/user/resetPassword").permitAll()
 		      .antMatchers(HttpMethod.OPTIONS).permitAll()
 		      .anyRequest().authenticated()
 		      .and()

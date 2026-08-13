@@ -13,6 +13,12 @@ public interface UserService {
 	
 	// get user by username
 	public User getUser(String username);
+
+	public Boolean existsByUsername(String username);
+
+	public Boolean existsByEmail(String email);
+
+	public Boolean updatePassword(String username, String newPassword);
 	
 	// delete used by id
 	public void deleteUser(Long userId);

@@ -17,49 +17,30 @@ import com.exam.service.UserService;
 
 @SpringBootApplication
 public class ExamserverApplication implements CommandLineRunner {
-
-
 	@Autowired
 	private UserService userService;
-	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-	
 	public static void main(String[] args) {
-		
-		
-		
-		
 		SpringApplication.run(ExamserverApplication.class, args);
 	}
-
-	
-	
-	
 	@Override
 	public void run(String... args) throws Exception {
 		try {
 		System.out.println("starting code");
-		
-		
-	User user =new User();
-		user.setFirstName("Durgesh");
-		user.setLastName("Tiwari");
-		user.setUsername("durgesh8896");
-		
-		user.setPassword(this.bCryptPasswordEncoder.encode("abc"));
-		user.setEmail("abc@gmaill.com");
+		User user =new User();
+		user.setFirstName("sai");
+		user.setLastName("prasad");
+		user.setUsername("saiprasad");
+		user.setPassword(this.bCryptPasswordEncoder.encode("SaiPrasad123!"));
+		user.setEmail("sai@gmaill.com");
 		user.setProfile("default.png");
-		
 		Role role1=new Role();
 		role1.setRoleId(44L);
 		role1.setRoleName("ADMIN");
-		
-		
 		Set<UserRole> userRoleSet=new HashSet<>();
 		UserRole userRole=new UserRole();
-		
+
 		userRole.setRole(role1);
 		userRole.setUser(user);
 		
@@ -72,13 +53,7 @@ public class ExamserverApplication implements CommandLineRunner {
 		}catch(UserFoundException e) {
 			e.printStackTrace();
 		}
-		
-//		
-		
-	}
 
-	
-	
-	
+	}
 	
 }

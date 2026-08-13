@@ -11,6 +11,8 @@ import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.co
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ForgotComponent } from './pages/forgot/forgot.component';
+import { ResetpasswordComponent } from './pages/resetpassword/resetpassword.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { InstructionComponent } from './pages/user/instruction/instruction.component';
@@ -38,6 +40,17 @@ const routes: Routes = [
 pathMatch:'full',
 
 },
+  {
+    path:'forgot',
+    component: ForgotComponent,
+    pathMatch:'full',
+
+  },
+  {
+    path: 'resetpassword',
+    component: ResetpasswordComponent,
+    pathMatch: 'full',
+  },
 {
   path:'admin',
   component:DashboardComponent,
@@ -81,14 +94,14 @@ pathMatch:'full',
   },
   //
   ],
-  
+
 
 
 },
 {
   path:'user-dashboard',
   component:UserDashboardComponent,
-  
+
   canActivate:[NormalGuard],
   children: [
     {
@@ -100,14 +113,14 @@ pathMatch:'full',
         component:InstructionComponent,
 
   },
-  
+
 ],
 },
 {
   path:'start/:qid',
       component:StartComponent,
       canActivate:[NormalGuard],
-      
+
 },
 
 ];

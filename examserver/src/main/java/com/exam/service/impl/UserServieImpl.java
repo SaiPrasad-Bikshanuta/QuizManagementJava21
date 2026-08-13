@@ -26,12 +26,12 @@ public class UserServieImpl  implements UserService {
 	@Override
 	public User createUser(User user, Set<UserRole> userRoles) throws Exception  {
 		
-		User local=this.userRepository.findByUsername(user.getUsername());        // check user is allready avialabe or not
+		User local=this.userRepository.findByUsername(user.getUsername());        // check user is already avialabe or not
 		
 		if(local!=null) {
-			System.out.println("user is allready there ! !");
+		//	System.out.println("user is already there ! !");
 //			throw new Exception("User already present");
-			throw new UserFoundException();
+		//	throw new UserFoundException();
 		}else {
 			// user create
 			
@@ -54,7 +54,23 @@ public class UserServieImpl  implements UserService {
 		return this.userRepository.findByUsername(username);
 	}
 
+	public Boolean existsByUsername(String username) {
+		return this.userRepository.existsByUsername(username);
+	}
 
+	public Boolean existsByEmail(String email) {
+		return this.userRepository.existsByEmail(email);
+	}
+
+	public Boolean updatePassword(String username,String password){
+		User user=this.userRepository.findByUsername(username);
+		if(user!=null){
+			user.setPassword(password);
+			this.userRepository.save(user);
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public void deleteUser(Long userId) {
 	this.userRepository.deleteById(userId);
