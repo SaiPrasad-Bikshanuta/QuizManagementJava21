@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginComponent } from '../pages/login/login.component';
 import { LoginService } from './login.service';
@@ -7,7 +7,7 @@ import { LoginService } from './login.service';
 @Injectable({
   providedIn: 'root'
 })
-export class NormalGuard implements CanActivate {
+export class NormalGuard  {
 
   constructor(private login:LoginService,private router:Router){
 
