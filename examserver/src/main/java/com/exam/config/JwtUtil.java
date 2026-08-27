@@ -1,10 +1,11 @@
 package com.exam.config;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+//import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
+import io.jsonwebtoken.security.Keys;
+import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +13,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtUtil {
-	 private String SECRET_KEY = "examportal";
+	 private SecretKey SECRET_KEY = Keys.hmacShaKeyFor("examportalforlearningandtestingtheknowledge".getBytes());
 
 	    public String extractUsername(String token) {
 	        return extractClaim(token, Claims::getSubject);
@@ -26,9 +27,7 @@ public class JwtUtil {
 	        final Claims claims = extractAllClaims(token);
 	        return claimsResolver.apply(claims);
 	    }
-	    private Claims extractAllClaims(String token) {
-	        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
-	    }
+	private Claims extractAllClaims(String token) { return Jwts.parser().verifyWith(SECRET_KEY).build().parseSignedClaims(token).getPayload(); }
 
 	    private Boolean isTokenExpired(String token) {
 	        return extractExpiration(token).before(new Date());
@@ -43,7 +42,7 @@ public class JwtUtil {
 
 	        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
 	                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
-	                .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
+	                .signWith(SECRET_KEY).compact();
 	    }
 
 	    public Boolean validateToken(String token, UserDetails userDetails) {
