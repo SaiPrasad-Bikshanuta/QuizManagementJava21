@@ -12,7 +12,7 @@ import { LoginComponent } from './pages/login/login.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HomeComponent } from './pages/home/home.component';
 import {MatCardModule} from '@angular/material/card';
@@ -47,62 +47,51 @@ import { ResetpasswordComponent } from './pages/resetpassword/resetpassword.comp
 
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    SignupComponent,
-    LoginComponent,
-    ForgotComponent,
-    ResetpasswordComponent,
-    HomeComponent,
-    DashboardComponent,
-    UserDashboardComponent,
-    ProfileComponent,
-    SidebarComponent,
-    WelcomeComponent,
-    ViewCategoriesComponent,
-    AddCategoryComponent,
-    ViewQuizzesComponent,
-    AddQuizComponent,
-    UpdateQuizComponent,
-
-    ViewQuizQuestionsComponent,
-     AddQuestionComponent,
-     UserSidebar,
-     LoadQuizComponent,
-     InstructionComponent,
-     StartComponent,
-     ResetpasswordComponent
-
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    FormsModule,
-    HttpClientModule,
-    MatSnackBarModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatListModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    CKEditorModule,
-    MatProgressSpinnerModule,
-    NgxUiLoaderModule,
-    NgxUiLoaderHttpModule.forRoot({
-      showForeground:true,
-    })
-
-
-  ],
-  providers: [authInterceptorProviders],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NavbarComponent,
+        FooterComponent,
+        SignupComponent,
+        LoginComponent,
+        ForgotComponent,
+        ResetpasswordComponent,
+        HomeComponent,
+        DashboardComponent,
+        UserDashboardComponent,
+        ProfileComponent,
+        SidebarComponent,
+        WelcomeComponent,
+        ViewCategoriesComponent,
+        AddCategoryComponent,
+        ViewQuizzesComponent,
+        AddQuizComponent,
+        UpdateQuizComponent,
+        ViewQuizQuestionsComponent,
+        AddQuestionComponent,
+        UserSidebar,
+        LoadQuizComponent,
+        InstructionComponent,
+        StartComponent,
+        ResetpasswordComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatSnackBarModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatListModule,
+        MatSlideToggleModule,
+        MatSelectModule,
+        CKEditorModule,
+        MatProgressSpinnerModule,
+        NgxUiLoaderModule,
+        NgxUiLoaderHttpModule.forRoot({
+            showForeground: true,
+        })], providers: [authInterceptorProviders, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
