@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from 'src/app/services/question.service';
 import Swal from 'sweetalert2';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+//import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ClassicEditor, Bold, Essentials, Italic, Paragraph } from 'ckeditor5';
 
 
 
@@ -11,18 +12,24 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   selector: 'app-add-question',
   templateUrl: './add-question.component.html',
   styleUrls: ['./add-question.component.css'],
-  
-  
+
+
 })
 export class AddQuestionComponent implements OnInit {
-  
+
+  //public Editor = ClassicEditor;
   public Editor = ClassicEditor;
-  
+
+  public config = {
+    licenseKey: 'GPL',
+    plugins: [Essentials, Paragraph, Bold, Italic],
+    toolbar: ['undo', 'redo', '|', 'bold', 'italic']
+  };
 
   qid: any;
   QTitle: any;
   question={
-    quiz:{ 
+    quiz:{
      qId:Number,
     },
     content:'',
@@ -75,7 +82,7 @@ export class AddQuestionComponent implements OnInit {
           Swal.fire('Error','Error in adding question','error')
         }
       );
-  
+
 
 
   }

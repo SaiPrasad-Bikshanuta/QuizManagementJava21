@@ -1,10 +1,10 @@
-<!-- <mat-card-title> Displaying the title within a mat-card </mat-card-title>, 
+<!-- <mat-card-title> Displaying the title within a mat-card </mat-card-title>,
 <mat-card-subtitle> Displaying a subtitle within a mat-card </mat-card-subtitle>,  -->
 <div class="bootstrap-wrapper">
     <div class="row mt20">
        <div class="col-md-12">
         <h1>Adding question to <span style="font-weight:bold">{{QTitle}}</span> </h1>
-        <mat-card>
+        <mat-card appearance="outlined">
             <mat-card-header>
                 <mat-card-subtitle>
                     Enter the detail of the new question
@@ -13,11 +13,16 @@
             <mat-card-content>
                 <form class="mt20" (submit)="formSubmit()"
                 >
-           
-              <!-- Implementing CKEditor for content editing with two-way binding to the 'question.content' property. -->
-              <ckeditor [editor]="Editor"  [(ngModel)]="question.content"
-              name="content"></ckeditor>
 
+              <!-- Implementing CKEditor for content editing with two-way binding to the 'question.content' property. -->
+<!--              <ckeditor [editor]="Editor"  [(ngModel)]="question.content"-->
+<!--              name="content"></ckeditor>-->
+                 <ckeditor
+                    [editor]="Editor"
+                    [config]="config"
+                    [(ngModel)]="question.content"
+                    name="content">
+                  </ckeditor>
 
               <!-- optins -->
               <div class="row">
@@ -55,7 +60,7 @@
                         <mat-label>
                             Entery Option3
                         </mat-label>
-                        <input 
+                        <input
                         required
                         [(ngModel)]="question.option3"
                         name="option3"
@@ -68,7 +73,7 @@
                     <mat-label>
                         Entery Option4
                     </mat-label>
-                    <input 
+                    <input
                     required
                     [(ngModel)]="question.option4"
                     name="option4"
@@ -78,7 +83,7 @@
               </div>
 
               <!-- answer -->
-           
+
             </div>
 
             <mat-form-field >
@@ -92,14 +97,14 @@
                       <mat-option *ngIf="question.option4"[value]="question.option4">{{question.option4}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            
-            
+
+
             <div class="container text-center">
                 <button type="submit" mat-raised-button color="accent">Add</button>
             </div>
-            
-            
-            
+
+
+
             </form>
             </mat-card-content>
         </mat-card>

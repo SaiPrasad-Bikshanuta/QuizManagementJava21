@@ -4,7 +4,7 @@
         <div class="row mt20 "  *ngIf="quizzes">
             
             <div  style="padding-left: 0%;" class="col-md-4" *ngFor="let q of quizzes">
-            <mat-card class="mb20 " >
+            <mat-card appearance="outlined" class="mb20 " >
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
                     <mat-card-title>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="col-md-12" *ngIf="quizzes.length ==0">
-            <mat-card>
+            <mat-card appearance="outlined">
                 <mat-card-content>
                     <h1>
                         <h1>
