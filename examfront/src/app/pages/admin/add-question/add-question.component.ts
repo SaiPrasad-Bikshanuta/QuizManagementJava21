@@ -9,11 +9,10 @@ import { ClassicEditor, Bold, Essentials, Italic, Paragraph } from 'ckeditor5';
 
 
 @Component({
-  selector: 'app-add-question',
-  templateUrl: './add-question.component.html',
-  styleUrls: ['./add-question.component.css'],
-
-
+    selector: 'app-add-question',
+    templateUrl: './add-question.component.html',
+    styleUrls: ['./add-question.component.css'],
+    standalone: false
 })
 export class AddQuestionComponent implements OnInit {
 

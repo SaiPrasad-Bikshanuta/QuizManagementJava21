@@ -3,9 +3,10 @@ import { LoginService } from 'src/app/services/login.service';
 import { LoginComponent } from '../login/login.component';
 import { NgForm } from '@angular/forms';
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css'],
+    standalone: false
 })
 export class ProfileComponent implements OnInit {
 

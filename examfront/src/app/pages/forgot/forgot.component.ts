@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { ForgotService } from 'src/app/services/forgot.service';
 
 @Component({
-  selector: 'app-forgot',
-  templateUrl: './forgot.component.html',
-  styleUrls: ['./forgot.component.css']
+    selector: 'app-forgot',
+    templateUrl: './forgot.component.html',
+    styleUrls: ['./forgot.component.css'],
+    standalone: false
 })
 export class ForgotComponent implements OnInit {
   enteredData = {

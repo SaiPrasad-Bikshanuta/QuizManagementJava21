@@ -5,9 +5,10 @@ import { QuizService } from 'src/app/services/quiz.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-instruction',
-  templateUrl: './instruction.component.html',
-  styleUrls: ['./instruction.component.css']
+    selector: 'app-instruction',
+    templateUrl: './instruction.component.html',
+    styleUrls: ['./instruction.component.css'],
+    standalone: false
 })
 export class InstructionComponent implements OnInit {
 

@@ -4,9 +4,10 @@ import { CategoryService } from 'src/app/services/category.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-add-category',
-  templateUrl: './add-category.component.html',
-  styleUrls: ['./add-category.component.css']
+    selector: 'app-add-category',
+    templateUrl: './add-category.component.html',
+    styleUrls: ['./add-category.component.css'],
+    standalone: false
 })
 export class AddCategoryComponent implements OnInit {
 

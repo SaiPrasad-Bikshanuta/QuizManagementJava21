@@ -3,9 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
-  selector: 'app-load-quiz',
-  templateUrl: './load-quiz.component.html',
-  styleUrls: ['./load-quiz.component.css']
+    selector: 'app-load-quiz',
+    templateUrl: './load-quiz.component.html',
+    styleUrls: ['./load-quiz.component.css'],
+    standalone: false
 })
 export class LoadQuizComponent implements OnInit {
   catId: any
